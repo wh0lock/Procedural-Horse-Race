@@ -5,26 +5,25 @@ void advance(int horseNum, int* horses);
 void printLane(int horseNum, int* horses);
 bool isWinner(int horseNum, int* horses);
 
-const int SIZE = 5;
+const int NUM_HORSES = 5;
+const int TRACK_LENGTH = 15;
 
 int main(){
 	int horses[] = {0, 0, 0, 0, 0};
 	int horseNum = 0;
-    std::string enter;
+   	std::string enter;
 	bool keepGoing = true;
 
 	while (keepGoing){
-		for (horseNum = 0; horseNum < SIZE; horseNum++){
+		for (horseNum = 0; horseNum < NUM_HORSES; horseNum++){
 			advance(horseNum, horses);
 			printLane(horseNum, horses);
+			if (isWinner(horseNum, horses)) {
+				keepGoing = false;
+			} // end if
 		} // end for
 		std::cout << "Press enter for another turn";
-		std::cin >> enter;
-		if (enter == ""){
-			keepGoing = true;
-		} else {
-			keepGoing = false;
-		} // end if
+		std::cin.ignore();
 	} // end while
 	return 0;
 } // end main
@@ -39,12 +38,22 @@ void advance(int horseNum, int* horses){
 } // end advance
 
 void printLane(int horseNum, int* horses){
-	std::cout << horseNum << ".............." << std::endl;
+	for (int i = 0; i < TRACK_LENGTH; i++) {
+		if (horses[horseNum] == i) {
+			std::cout << horseNum;
+		} else {
+			std::cout << ".";
+		} // end if
+	} // end for
+	std::cout << std::endl;
 } // end printLane
 
 bool isWinner(int horseNum, int* horses){
-	if (horses[horseNum] = 5){
+	bool result;
+	if (horses[horseNum] >= TRACK_LENGTH){
 		std::cout << horseNum << " WINS!!!" << std::endl;
+		result = true;
 	} // end if
-	return 0;
+	return result;
 } // end isWinner
+
