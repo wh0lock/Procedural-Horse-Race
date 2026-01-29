@@ -10,7 +10,7 @@ const int SIZE = 5;
 int main(){
 	int horses[] = {0, 0, 0, 0, 0};
 	int horseNum = 0;
-        std::string enter;
+    std::string enter;
 	bool keepGoing = true;
 
 	while (keepGoing){

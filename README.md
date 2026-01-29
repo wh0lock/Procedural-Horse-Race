@@ -12,15 +12,24 @@ functions:
 const int SIZE = 5
 
 main(){
-    int horses[] = {0, 1, 2, 3, 4};
+    int horses[] = {0, 0, 0, 0, 0};
     int horseNum = 0;
+    std::string enter;
+    bool keepGoing = true;
 
+    while keepGoing:
     for (horseNum = 0; horseNum < SIZE; horseNum++){
         advance(horseNum);
         printLane(horseNum);
         isWinner(horseNum);
     } // end for
     
+    std::cout << "Press enter for another turn";
+    std::cin >> enter;
+
+    if enter is ""; keepGoing is true
+    else keepGoing is false (exit loop)
+
     return 0;
 } // end main
 
@@ -30,13 +39,12 @@ void advance(){
 
     coin = dist(rd);
 
-    if (coin == 1){
-        horseNum = horseNum + 1
-    } else {
-        stay put
+    horses[horseNum] += coin;
+] // end advance
 
 void printLane(){
     std::cout << "..............." << std::endl;
+} // end printLane
 
 bool isWinner(){
     if horseNum in position 5, isWinner gets true
